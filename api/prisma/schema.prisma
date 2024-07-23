@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+// metadata ref definition for the database and the url to it . 
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// creation of the paper or model user  with 6 attributes so far . 
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId     
+  email     String   @unique
+  username  String   @unique
+  password  String
+  avatar    String?
+  createdAt DateTime @default(now())
+}
